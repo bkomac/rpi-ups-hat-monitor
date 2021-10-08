@@ -20,7 +20,7 @@ def readCapacity(bus):
     address = 0x36
     read = bus.read_word_data(address, 4)
     swapped = struct.unpack("<H", struct.pack(">H", read))[0]
-    capacity = round(swapped/256,2)
+    capacity = swapped/256,1
     return capacity
 
 
