@@ -45,16 +45,16 @@ client.loop_start()
 
 bus = smbus.SMBus(1)  # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 
-print ("Voltage:%5.2fV" % readVoltage(bus))
+print("Voltage:%5.2fV" % readVoltage(bus))
 
-print ("Battery:%5i%%" % readCapacity(bus))
+print("Battery:%5i%%" % readCapacity(bus))
 
 
 # draw battery
 
 n = int(round(readCapacity(bus) / 10))
 
-print ("----------- ")
+print("----------- ")
 
 sys.stdout.write('|')
 
@@ -68,19 +68,22 @@ for i in range(0, 10-n):
 
 sys.stdout.write('|+\n')
 
-print ("----------- ")
+print("----------- ")
 
 
 if readCapacity(bus) == 100:
 
-    print ("Battery FULL")
+    print("Battery FULL")
 
 if readCapacity(bus) < 20:
 
-    print ("Battery LOW")
+    print("Battery LOW")
 
 
 while True:
-  sensor_data = [readVoltage(bus), readVoltage(bus)]
-  client.publish("pi05/ups", str(sensor_data))
-  time.sleep(10)
+    sensor_data = [readVoltage(bus), readVoltage(bus)]
+    print("Voltage:%5.2fV" % readVoltage(bus))
+
+    print("Battery:%5i%%" % readCapacity(bus))
+    client.publish("pi05/ups", str(sensor_data))
+    time.sleep(10)
