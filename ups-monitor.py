@@ -3,6 +3,7 @@ import smbus
 import sys
 import time
 import paho.mqtt.client as mqtt
+import os
 
 
 def readVoltage(bus):
@@ -36,10 +37,13 @@ def on_message(client, userdata, msg):
 def on_publish(mosq, obj, mid):
     print("mid: " + str(mid))
 
+password = os.environ.get('MQTT_PASS')
+
 
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
+client.username_pw_set("esp", password)
 client.connect("node.komac.si", 11883, 60)
 client.loop_start()
 
