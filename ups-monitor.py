@@ -4,6 +4,7 @@ import sys
 import time
 import paho.mqtt.client as mqtt
 import os
+import json
 
 
 def readVoltage(bus):
@@ -84,7 +85,7 @@ if readCapacity(bus) < 20:
 
 
 while True:
-    sensor_data = {"voltage": readVoltage(bus), "percent": readCapacity(bus)}
+    sensor_data = json.dumps({"voltage": readVoltage(bus), "percent": readCapacity(bus)})
     print("Voltage:%5.2fV" % readVoltage(bus))
 
     print("Battery:%5i%%" % readCapacity(bus))
