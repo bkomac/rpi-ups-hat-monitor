@@ -20,7 +20,7 @@ def readCapacity(bus):
     address = 0x36
     read = bus.read_word_data(address, 4)
     swapped = struct.unpack("<H", struct.pack(">H", read))[0]
-    capacity = round(swapped/256,1)
+    capacity = round(swapped/256,2)
     return capacity
 
 
@@ -84,7 +84,7 @@ if readCapacity(bus) < 20:
 
 
 while True:
-    sensor_data = "{\"voltage\": {1}, \"percent\": {2}}".format(readVoltage(bus),readCapacity(bus))
+    sensor_data = {"voltage": readVoltage(bus), "percent": readCapacity(bus)}
     print("Voltage:%5.2fV" % readVoltage(bus))
 
     print("Battery:%5i%%" % readCapacity(bus))
