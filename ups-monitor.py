@@ -86,7 +86,7 @@ if readCapacity(bus) < 20:
 
 
 while True:
-    sensor_data = [readVoltage(bus), readVoltage(bus)]
+    sensor_data = ["%5.2fV" % readVoltage(bus), "%5i%%" % readCapacity(bus)"]
     print("Voltage:%5.2fV" % readVoltage(bus))
 
     print("Battery:%5i%%" % readCapacity(bus))
