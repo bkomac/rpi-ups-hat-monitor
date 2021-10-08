@@ -39,6 +39,7 @@ def on_publish(mosq, obj, mid):
 
 password = os.environ.get('MQTT_PASS')
 
+print("Pass: ", password)
 
 client = mqtt.Client()
 client.on_connect = on_connect
