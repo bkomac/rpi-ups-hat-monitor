@@ -88,5 +88,5 @@ while True:
     print("Voltage:%5.2fV" % readVoltage(bus))
 
     print("Battery:%5i%%" % readCapacity(bus))
-    client.publish("pi05/ups", str(sensor_data))
+    client.publish("pi05/ups", sensor_data)
     time.sleep(10)
