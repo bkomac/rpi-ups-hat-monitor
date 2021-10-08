@@ -39,8 +39,6 @@ def on_publish(mosq, obj, mid):
 
 password = os.environ.get('MQTT_PASS')
 
-print("Pass: ", password)
-
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
@@ -86,7 +84,7 @@ if readCapacity(bus) < 20:
 
 
 while True:
-    sensor_data = [("%5.2fV" % readVoltage(bus)), ("%5i%%" % readCapacity(bus))]
+    sensor_data = [("%V" % readVoltage(bus)), ("%%" % readCapacity(bus))]
     print("Voltage:%5.2fV" % readVoltage(bus))
 
     print("Battery:%5i%%" % readCapacity(bus))
