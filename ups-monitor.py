@@ -39,7 +39,13 @@ def on_message(client, userdata, msg):
 def on_publish(mosq, obj, mid):
     print("mid: " + str(mid))
 
-password = os.environ.get('MQTT_PASS')
+#password = os.environ.get('MQTT_PASS')
+
+with open("password.txt") as f:
+    lines = f.readlines()
+    username = lines[0].strip()
+    password = lines[1].strip()
+    print(f"USERNAME={username}, PASSWORD={password}")
 
 client = mqtt.Client()
 client.on_connect = on_connect
