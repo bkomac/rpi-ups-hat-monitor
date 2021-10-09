@@ -103,6 +103,6 @@ while True:
     if (readCapacity(bus) < 60):
         client.publish("pi05/ups", "Shuting down")
         print (" Shuting down now ....")
-        os.system('sudo shutdown -r now')
+        os.system('sudo shutdown -h now')
 
     time.sleep(10)
