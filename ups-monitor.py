@@ -45,7 +45,7 @@ with open("password.txt") as f:
     lines = f.readlines()
     username = lines[0].strip()
     password = lines[1].strip()
-    print(f"USERNAME={username}, PASSWORD={password}")
+    print("USERNAME={}, PASSWORD={}",username, password)
 
 client = mqtt.Client()
 client.on_connect = on_connect
