@@ -50,7 +50,7 @@ with open("password.txt") as f:
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.username_pw_set("esp", password)
+client.username_pw_set(username, password)
 client.connect("node.komac.si", 11883, 60)
 client.loop_start()
 
