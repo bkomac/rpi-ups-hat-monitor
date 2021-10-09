@@ -100,7 +100,7 @@ while True:
     print("Battery:%5i%%" % readCapacity(bus))
     client.publish("pi05/ups", sensor_data)
 
-    if (readCapacity(bus) < 50):
+    if (readCapacity(bus) < 60):
         client.publish("pi05/ups", "Shuting down")
         print (" Shuting down now ....")
         os.system('sudo shutdown -r now')
