@@ -1,0 +1,13 @@
+[Unit]
+Description=UPS battery monitoring service
+After=multi-user.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/python/rpi-ups-hat-monitor/
+ExecStart=python ups-monitor.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
