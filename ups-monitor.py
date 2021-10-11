@@ -102,6 +102,7 @@ while True:
 
     if (readCapacity(bus) < 30):
         client.publish("pi05/ups", "Shuting down")
+        os.system('docker stop influxdb')
         print (" Shuting down now ....")
         time.sleep(5)
         os.system('sudo shutdown -h now')
